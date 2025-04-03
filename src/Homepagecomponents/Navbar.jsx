@@ -1,21 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { FaMoon, FaSun } from 'react-icons/fa'; // Import icons
 
 function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedMode = localStorage.getItem('darkMode');
+    return savedMode === 'true' || false;
+  });
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Check authentication status
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+    localStorage.setItem('darkMode', isDarkMode);
+  }, [isDarkMode]);
+
   useEffect(() => {
     try {
       console.log('Navbar: Checking authentication...');
       const authToken = localStorage.getItem('authToken');
-      console.log('Navbar auth check:', { 
+      console.log('Navbar auth check:', {
         hasToken: !!authToken,
         tokenLength: authToken ? authToken.length : 0,
-        currentPath: window.location.pathname
+        currentPath: window.location.pathname,
       });
       setIsAuthenticated(!!authToken);
     } catch (error) {
@@ -23,13 +36,12 @@ function Navbar() {
         error: error,
         message: error.message,
         stack: error.stack,
-        currentPath: window.location.pathname
+        currentPath: window.location.pathname,
       });
       setIsAuthenticated(false);
     }
   }, []);
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -49,9 +61,8 @@ function Navbar() {
       console.error('Navbar sign out error:', {
         error: error,
         message: error.message,
-        stack: error.stack
+        stack: error.stack,
       });
-      // Still try to redirect even if there's an error
       navigate('/signin');
     }
   };
@@ -71,40 +82,45 @@ function Navbar() {
       console.error('Navbar logo click error:', {
         error: error,
         message: error.message,
-        stack: error.stack
+        stack: error.stack,
       });
-      // Default to signin on error
       navigate('/signin');
     }
   };
 
+  
+
+  const toggleDarkMode = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+  };
+
   return (
-    <nav className={`navbar navbar-expand-lg navbar-light fixed-top ${isScrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar navbar-expand-lg navbar-light fixed-top ${isScrolled ? 'scrolled' : ''} ${isDarkMode ? 'dark-mode-nav' : ''}`}>
       <div className="container">
-        <Link 
-          className="navbar-brand" 
-          to="#" 
+        <Link
+          className="navbar-brand"
+          to="#"
           onClick={handleLogoClick}
-          style={{ 
+          style={{
             color: '#FFFFFF',
             display: 'flex',
             alignItems: 'center',
             fontSize: '1.75rem',
             fontWeight: '700',
-            letterSpacing: '0.5px'
+            letterSpacing: '0.5px',
           }}
         >
-          <img 
-            src='/logo-white.png' 
-            alt="Logo" 
-            style={{ 
-              height: '36px', 
+          <img
+            src="/logo-white.png"
+            alt="Logo"
+            style={{
+              height: '36px',
               marginRight: '12px',
-              transition: 'transform 0.3s ease'
+              transition: 'transform 0.3s ease',
             }}
             className="navbar-logo"
           />
-          Instant-Care
+          AI-SAHAYAK
         </Link>
 
         <button
@@ -155,28 +171,32 @@ function Navbar() {
             </li>
           </ul>
 
-          <div className="nav-item">
+          <div className="nav-item" style={{ display: 'flex', alignItems: 'center' }}>
             {isAuthenticated ? (
-              <button
-                className="btn btn-sign"
-                onClick={handleSignOut}
-              >
+              <button className="btn btn-sign" onClick={handleSignOut}>
                 Sign Out
               </button>
             ) : (
-              <Link
-                className="btn btn-sign"
-                to="/signin"
-              >
+              <Link className="btn btn-sign" to="/signin">
                 Sign In
               </Link>
             )}
+            <span style={{cursor: 'pointer', marginLeft: '10px'}} onClick={toggleDarkMode}>
+              {isDarkMode ? <FaSun color="white" size={'1.5rem'}/> : <FaMoon color="white" size={'1.5rem'}/>}
+            </span>
           </div>
         </div>
       </div>
 
       <style>
         {`
+          body.dark-mode {
+            background-color: #121212;
+            color: #FFFFFF;
+          }
+          .dark-mode-nav {
+            background-color: #212121;
+          }
           .navbar {
             background-color: #693382;
             padding: 0;

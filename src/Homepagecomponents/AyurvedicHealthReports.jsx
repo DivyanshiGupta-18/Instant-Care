@@ -142,11 +142,63 @@ Format your response in markdown with the following structure:
   return (
     <section className="ayurvedic-reports-section">
       <div className="container py-5">
+
         <div className="text-center mb-5">
           <h2 className="section-title">Personalized Ayurvedic Health Reports</h2>
-          <p className="section-subtitle">
+          <p className="section-subtitle mb-5">
             Experience AI-driven analysis of your dosha (Vata, Pitta, Kapha) and receive personalized diet recommendations.
           </p>
+          <div className="row">
+        <div className="col-md-4 mb-4">
+          <div className="card">
+            <img
+              src="https://media.istockphoto.com/id/173877738/photo/herbal-treatment.jpg?s=612x612&w=0&k=20&c=eu2OSQLQhhocN02tslGZVIKjJr-nhKj-dzDqPBPylPs="
+              className="card-img-top"
+              alt="Panchakarma Therapy"
+            />
+            <div className="card-body" style={{height: "250px"}}>
+              <h5 className="card-title">Holistic Healing Approach</h5>
+              <p className="card-text">
+              Ayurveda, the ancient system of medicine, promotes a holistic approach to health by balancing the body, mind, and spirit. It relies on natural remedies, lifestyle modifications, and mindful living to enhance overall well-being.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-md-4 mb-4">
+          <div className="card">
+            <img
+              src="https://shadanga.com/cdn/shop/articles/panchakarma-a-holistic-approach-to-wellness-388327_1080x.jpg?v=1724546632"
+              className="card-img-top"
+              alt="Shirodhara Treatment"
+            />
+            <div className="card-body">
+              <h5 className="card-title">Detoxification and Panchakarma</h5>
+              <p className="card-text">
+              Ayurvedic detox therapies, such as Panchakarma, remove accumulated toxins from the body. This cleansing process involves massages, steam therapy, and dietary changes to rejuvenate the body and boost immunity.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-md-4 mb-4">
+          <div className="card">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwT7NwLnEMUHgVKuGXAN6bcgLwgbTC9mz7cCjjBbct3XKzoi7_UFoWNqHDsda1ys4CkOk&usqp=CAU"
+              className="card-img-top"
+              alt="Ayurvedic Herbs and Spices"
+            />
+            <div className="card-body">
+              <h5 className="card-title">Gut Health and Digestion</h5>
+              <p className="card-text">
+              Good digestion is considered the foundation of overall health in Ayurveda. A strong digestive fire (Agni) ensures proper nutrient absorption and toxin elimination, preventing illnesses and enhancing vitality.
+              </p>
+            </div>
+          </div>
+        </div>
+
+     
+      </div>
         </div>
 
         <div className="search-container">

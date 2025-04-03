@@ -54,8 +54,7 @@ const HeroSectionHomepage = () => {
             className="lead mb-4 fw-semibold"
             style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.5)" }}
           >
-            Quickly locate and secure hospital beds during emergencies or
-            planned visits.
+            Smart Healthcare with AI & Ayurveda – Fast, Accurate, Holistic!
           </p>
           <button
             className="btn btn-lg"

@@ -62,6 +62,7 @@ const SectionLoader = () => (
 
 function HomePage() {
   const navigate = useNavigate();
+  // const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     try {
