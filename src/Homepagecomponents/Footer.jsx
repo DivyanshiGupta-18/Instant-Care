@@ -80,7 +80,7 @@ function Footer() {
 
           <div className="col-md-12 text-center">
             <p className="copyright" style={{ fontSize: "0.9rem" }}>
-              &copy; {new Date().getFullYear()} Instant-Care by CodeDrifter.
+              &copy; {new Date().getFullYear()} AI-SAHAYAK BY AI-AGENT.
             </p>
           </div>
         </div>

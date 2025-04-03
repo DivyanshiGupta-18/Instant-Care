@@ -26,6 +26,10 @@ const Trusted = lazy(() => withErrorLogging(
   "Trusted"
 ));
 
+//  const DiseaseAnalyzer = lazy(() => withErrorLogging (
+//   () => import("../Homepagecomponents/DiseaseAnalyzer")
+//  ))
+
 const AyurvedicLifestyleTracker = lazy(() => withErrorLogging(
   () => import("../Homepagecomponents/AyurvedicLifestyleTracker"),
   "AyurvedicLifestyleTracker"
@@ -107,6 +111,13 @@ function HomePage() {
             <Trusted />
           </Suspense>
         </section>
+
+         {/* DiseaseAnalyzer */}
+         {/* <section className="disease-analyzer py-5">
+        <Suspense fallback={<SectionLoader />}>
+            <DiseaseAnalyzer />
+          </Suspense>
+        </section> */}
 
         {/* Main Content */}
         <main>

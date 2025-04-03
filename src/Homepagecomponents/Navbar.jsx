@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { FaMoon, FaSun } from 'react-icons/fa'; // Import icons
 
 function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Check local storage for saved mode, default to light mode
     const savedMode = localStorage.getItem('darkMode');
     return savedMode === 'true' || false;
   });
@@ -13,11 +13,13 @@ function Navbar() {
   const location = useLocation();
 
   useEffect(() => {
+    // Apply dark mode class to body
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
     } else {
       document.body.classList.remove('dark-mode');
     }
+    // Save mode to local storage
     localStorage.setItem('darkMode', isDarkMode);
   }, [isDarkMode]);
 
@@ -87,8 +89,6 @@ function Navbar() {
       navigate('/signin');
     }
   };
-
-  
 
   const toggleDarkMode = () => {
     setIsDarkMode((prevMode) => !prevMode);
@@ -171,7 +171,7 @@ function Navbar() {
             </li>
           </ul>
 
-          <div className="nav-item" style={{ display: 'flex', alignItems: 'center' }}>
+          <div className="nav-item">
             {isAuthenticated ? (
               <button className="btn btn-sign" onClick={handleSignOut}>
                 Sign Out
@@ -181,10 +181,10 @@ function Navbar() {
                 Sign In
               </Link>
             )}
-            <span style={{cursor: 'pointer', marginLeft: '10px'}} onClick={toggleDarkMode}>
-              {isDarkMode ? <FaSun color="white" size={'1.5rem'}/> : <FaMoon color="white" size={'1.5rem'}/>}
-            </span>
           </div>
+          {/* <button className='btn btn-sign' onClick={toggleDarkMode}>
+            {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+          </button> */}
         </div>
       </div>
 
