@@ -120,7 +120,7 @@ function Navbar() {
             }}
             className="navbar-logo"
           />
-          AI-SAHAYAK
+          Instant-Care
         </Link>
 
         <button
